@@ -8,10 +8,9 @@ docker network create --subnet=172.18.0.0/16 akka_cluster_network
 
 for port in `seq 2551 2553`;
 do
-    DOCKER_CONTAINER_IP=172.18.0.$(($port - 2548))
+    DOCKER_CONTAINER_IP=0.0.0.0
     echo $DOCKER_CONTAINER_IP
     docker run -d \
-    --net akka_cluster_network \
     -p $port:$port -p $((6449 + $port)):9000 \
     -e BUILD_ENV=dev \
     -e AKKA_PORT=$port \

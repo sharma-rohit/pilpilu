@@ -2,14 +2,14 @@ import akka.actor.ActorSystem
 import akka.event.{ Logging, LoggingAdapter }
 import akka.stream.ActorMaterializer
 import cluster.ClusterManager
-import common.Constant.ACTOR_SYSTEM_NAME
+import common.Constant.ActorSystemName
 import http.HttpServer
 
 import scala.concurrent.ExecutionContext
 import scala.util.{ Failure, Success }
 
 trait Setup {
-  implicit val actorSystem: ActorSystem = ActorSystem(ACTOR_SYSTEM_NAME, SystemConfigService.config)
+  implicit val actorSystem: ActorSystem = ActorSystem(ActorSystemName, SystemConfigService.config)
   implicit val actorMaterializer: ActorMaterializer = ActorMaterializer()
   val loggingAdapter: LoggingAdapter = Logging(actorSystem, "Setup")
 }

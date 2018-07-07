@@ -1,5 +1,5 @@
 import com.typesafe.config.{ Config, ConfigFactory, ConfigValueFactory }
-import common.Constant.ACTOR_SYSTEM_NAME
+import common.Constant.ActorSystemName
 import utility.CustomException.ConfigMissingException
 import utility.EnvironmentVariableReader
 
@@ -11,7 +11,7 @@ object SystemConfigService {
   private def resolveConfig(seedNodes: Iterable[String], hostName: String, port: Int): Config = {
     import scala.collection.JavaConverters._
     ConfigFactory.empty()
-      .withValue("akka.cluster.seed-nodes", ConfigValueFactory.fromIterable(seedNodes.map(seedNode => s"akka.tcp://$ACTOR_SYSTEM_NAME@$seedNode").asJava))
+      .withValue("akka.cluster.seed-nodes", ConfigValueFactory.fromIterable(seedNodes.map(seedNode => s"akka.tcp://$ActorSystemName@$seedNode").asJava))
       .withValue("akka.remote.netty.tcp.hostname", ConfigValueFactory.fromAnyRef(hostName))
       .withValue("akka.remote.netty.tcp.port", ConfigValueFactory.fromAnyRef(port))
       .withValue("akka.remote.netty.tcp.bind-hostname", ConfigValueFactory.fromAnyRef(EnvironmentVariableReader.read("AKKA_BIND_HOSTNAME")(identity).get))

@@ -10,9 +10,9 @@ class EntityActor extends Actor with ActorLogging {
 
   override def receive: Receive = {
     case CacheData(id, state) =>
-      log.info("Yo maan got data .............")
+      log.info(s"Caching data for key: $id")
       data = Some(state)
-      sender ! s"saved state for $id"
+      sender ! data
     case GetCachedData(id) => sender ! data.map(CacheData(id, _))
   }
 }

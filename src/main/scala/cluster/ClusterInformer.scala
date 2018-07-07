@@ -23,5 +23,5 @@ class ClusterInformer extends Actor with ActorLogging {
 
 object ClusterInformer {
   def props: Props = Props(new ClusterInformer)
-  val CLUSTER_INFORMER_NAME = "cluster-informer"
+  val ClusterInformerName = "cluster-informer"
 }
