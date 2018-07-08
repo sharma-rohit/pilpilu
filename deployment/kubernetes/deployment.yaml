@@ -1,0 +1,38 @@
+apiVersion: "apps/v1beta1"
+kind: Deployment
+metadata:
+  name: pilpilu
+spec:
+  selector:
+    matchLabels:
+      app: pilpilu
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: pilpilu
+    spec:
+      containers:
+       - name: pilpilu
+         image: "localhost:5000/pilpilu:0.1.1"
+         ports:
+          # akka remoting
+          - name: remoting
+            containerPort: 2552
+            protocol: TCP
+          # akka-management bootstrap
+          - name: bootstrap
+            containerPort: 8558
+            protocol: TCP
+          # external http
+          - name: akka-mgmt-http
+            containerPort: 8558
+            protocol: TCP
+          # cache port
+          - name: cache-port
+            containerPort: 9000
+            protocol: TCP
+         readinessProbe:
+          httpGet:
+            port: 9000
+            path: /ping

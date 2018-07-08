@@ -13,7 +13,9 @@ class EntityActor extends Actor with ActorLogging {
       log.info(s"Caching data for key: $id")
       data = Some(state)
       sender ! data
-    case GetCachedData(id) => sender ! data.map(CacheData(id, _))
+    case GetCachedData(id) =>
+      log.info(s"sending cached data for key: $id")
+      sender ! data.map(CacheData(id, _))
   }
 }
 
