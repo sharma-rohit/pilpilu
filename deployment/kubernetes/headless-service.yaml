@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: pilpilu-headless-svc
+  labels:
+    app: pilpilu
+spec:
+  clusterIP: None
+  selector:
+    app: pilpilu
+  ports:
+    - port: 8558
+      targetPort: 8558
+      protocol: TCP

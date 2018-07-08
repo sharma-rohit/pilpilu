@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pilpilu
+  name: pilpilu
+spec:
+  selector:
+    app: pilpilu
+  type: ClusterIP
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 9000

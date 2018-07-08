@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pilpilu
+spec:
+  rules:
+    - host: "pilpilu-distributed-cache.com"
+      http:
+        paths:
+          - backend:
+              serviceName: pilpilu
+              servicePort: 80

@@ -1,3 +1,5 @@
+import com.typesafe.sbt.packager.docker.{Cmd, ExecCmd}
+
 name := "pilpilu"
 
 version := "0.1.0"
@@ -9,3 +11,5 @@ lazy val root = (project in file(".")).enablePlugins(JavaAppPackaging, DockerPlu
 maintainer in Docker := "rohitsharma9204@gmail.com"
 dockerBaseImage := "openjdk:10"
 dockerExposedPorts := Seq(9000)
+dockerRepository := Some("localhost:5000")
+daemonUser in Docker := "root"

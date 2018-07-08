@@ -9,7 +9,7 @@ import scala.concurrent.ExecutionContext
 import scala.util.{ Failure, Success }
 
 trait Setup {
-  implicit val actorSystem: ActorSystem = ActorSystem(ActorSystemName, SystemConfigService.config)
+  implicit val actorSystem: ActorSystem = ActorSystem(ActorSystemName)
   implicit val actorMaterializer: ActorMaterializer = ActorMaterializer()
   val loggingAdapter: LoggingAdapter = Logging(actorSystem, "Setup")
 }

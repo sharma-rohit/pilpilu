@@ -3,7 +3,8 @@ val AkkaHttp = "10.1.0"
 val AkkaStream = "2.5.11"
 val Circe = "0.9.1"
 val CodahaleMetrics = "3.0.2"
-val AmazonSdk2 = "2.0.0-preview-10"
+val AkkaManagement = "0.15.0"
+val AkkaHttpCirceVersion = "1.19.0"
 
 val circeDependencies = Seq(
   "io.circe" %% "circe-core",
@@ -27,7 +28,11 @@ libraryDependencies ++= Seq(
 
   "com.codahale.metrics" % "metrics-core" % CodahaleMetrics,
 
-  "software.amazon.awssdk" % "aws-sdk-java" % AmazonSdk2
+  "com.lightbend.akka.management" %% "akka-management-cluster-bootstrap" % AkkaManagement,
+  "com.lightbend.akka.discovery" %% "akka-discovery-dns" % AkkaManagement,
+
+  "de.heikoseeberger" %% "akka-http-circe" % AkkaHttpCirceVersion
+
 ) ++ circeDependencies
 
 
