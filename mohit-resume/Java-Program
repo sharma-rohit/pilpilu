@@ -1,0 +1,34 @@
+public class CircularlyString {
+    public void isCircularlyString(String inputString1, String inputString2) {
+        if(inputString1.length()==inputString2.length()) {
+            int startingCharIndex=0;
+            for (int i = 0; i < inputString1.length(); i++) {
+                if(inputString1.charAt(0)==inputString2.charAt(i)){
+                    startingCharIndex=i;
+                      break;
+                  }
+            }
+            StringBuffer inputString2substring=new StringBuffer( inputString2.substring(startingCharIndex));
+            if(inputString2substring.length()==inputString1.length() && inputString1.equals(inputString2substring.toString())){
+                System.out.println("Circularly Strings");
+            }else if(inputString1.length()!=inputString2substring.length()){
+                inputString2substring.append(inputString2.substring(0,startingCharIndex));
+                if(inputString1.equals( inputString2substring.toString())){
+                    System.out.println("Circularly String");
+                }else{
+                    System.out.println("Check2");
+                    System.out.println("Non circularly Strings");
+                }
+            }
+        }else{
+            System.out.println("Check1");
+            System.out.println("Non circularly strings");
+        }
+    }
+
+    public static void main(String[] args) {
+        CircularlyString obj=new CircularlyString();
+        obj.isCircularlyString("bbaaa","aaabb");
+    }
+}
+
